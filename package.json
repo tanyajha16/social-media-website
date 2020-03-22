@@ -1,0 +1,27 @@
+{
+  "name": "codial",
+  "version": "1.0.0",
+  "description": "my all social media web application",
+  "main": "index.js",
+  "scripts": {
+    "start": " nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "social"
+  ],
+  "author": "tanya prakash",
+  "license": "ISC",
+  "dependencies": {
+    "connect-mongo": "^3.2.0",
+    "cookie-parser": "^1.4.4",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.0",
+    "mongoose": "^5.9.4",
+    "node-sass-middleware": "^0.11.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  }
+}
