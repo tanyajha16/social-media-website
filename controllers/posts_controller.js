@@ -3,14 +3,14 @@
 // requiring post schema
 const Post=require('../models/post');
 const Comment=require('../models/comment');
-module.exports.create=function(req,res)
+module.exports.create = function(req,res)
 {
     console.log(req.user);
     console.log(req.cookies);
     Post.create({
         
     content:req.body.content,
-    user:req.user
+    user:req.user.id
     },function(err,post)
     {
         if(err)
@@ -27,7 +27,7 @@ module.exports.create=function(req,res)
 // to delete the post
 module.exports.destroy=function(req,res)
 {
-    Post.fingById(req.params.id,function(err,post)
+    Post.findById(req.params.id,function(err,post)
     {
         // .id converts the object to the string
         if(post.user==req.user.id)
