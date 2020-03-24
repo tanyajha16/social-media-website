@@ -1,16 +1,21 @@
+
+
 <li>
     <p>
+            <div id="post-container">
            
             <% if (locals.user && locals.user.id == post.user.id) { %>
-            <small>
-                    <a href="/posts/destroy/<%= post.id %>">del</a>
-            </small>
-            <% } %>
-  <%= post.content %>
-  <br>
+        <div id="del-image">   
+        <small>
+        <a href="/posts/destroy/<%= post.id %>"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR9eG-dTn_okDl1n9PVbCo5oKw23LxlaPFaNUEt1M4EnF-KDW6D"width="55px";height="50px";></a>
+        </small>
+        </div>
+        <% } %>
+  <div id="post-content"><%= post.content %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
   <small>
     <%= post.user.name %>
  </small>  
+</div>
     </p>   
     <div class="post-comments">
             <% if(locals.user) {%>
@@ -23,7 +28,7 @@
           <div class="post-comments-list">
 
                   <ul id="post-comments-<%= post._id %>">
-                          <% for(comment of post.comments) {%>
+                          <% for(comment of post.comments) {%><br>
                              
                                <%- include('_comment') -%>
 

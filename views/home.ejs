@@ -1,25 +1,33 @@
-        <h1>codeial/tanya</h1>
 
-        
+<div id="post-section">
         <section id="feed-posts">
-                <h4>Posts</h4>
                 <% if(locals.user) { %>
+                        <h1>HOME PAGE</h1>
+                        <h4>Posts</h4>
                 <form action="/posts/create" id="new-posts-form"  method="POST">
               <textarea name="content" cols="30" rows="3"  placeholder="do the post" required>
-        </textarea>    
-                <input type="submit" value="Post">
+        </textarea>    <br>
+                <input type="submit" value="Post"><br><br>
                 </form>
-                <% } %>
+        </div>               
 
   <div id="posts-list-container">
       <ul>
+        
         <% for (post of posts){ %>
-              
+                <div id="list_item">
+                
                 <%- include('_post') -%>
 
-
+        </div>
+                <% } %><br><br>
+               
+        
                 <% } %>
+        
+                
               </ul>
+              
               </div>
 
              </section>
