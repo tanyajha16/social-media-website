@@ -6,7 +6,7 @@ const usersController=require ('../controllers/users_controller');
 console.log("the users router loaded");
 
 
-router.get('/profile',passport.checkAuthentication, usersController.profile);
+router.get('/profile/:id',passport.checkAuthentication, usersController.profile);
 
 // writing router for the sign in and sign up pages
 router.get('/sign-up',usersController.signUp);

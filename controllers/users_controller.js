@@ -5,26 +5,31 @@ const User=require('../models/user');
 
 module.exports.profile=function(req,res)
 {
-    if(req.user){
-    User.findById(req.user,function(err,user)
-    {
-        if(user)
-        {
+    // if(req.user){
+    // User.findById(req.user,function(err,user)
+    // {
+    //     if(user)
+    //     {
+            User.findById(req.params.id,function(err,user)
+            {
+
+           
             return res.render('user_profile',{
                 title:"User Profile",
-                user:user
+                profile_user:user
                
-            })
+            });
+        });
 
         }
-        return res.redirect('/users/sign-in');
-    })
+        // return res.redirect('/users/sign-in');
+    // })
 
-    }else{
-        return res.redirect('/users/sign-in');
-    }
+//     }else{
+//         return res.redirect('/users/sign-in');
+//     }
     
-}
+// }
 
 // adding actions for sign up
 module.exports.signUp=function(req,res){
