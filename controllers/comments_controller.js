@@ -30,3 +30,25 @@ const Post=require('../models/post');
      });
 
  }
+
+
+ module.exports.destroy=function(req,res)
+ {
+     Comment.findById(req.params.id,function(err,comment)
+     {
+         if(comment.user == req.user.id)
+         {
+        //  now find the post to delete the comment from the post
+         let postId=comment.post;
+         comment.remove();
+
+        //  $ pull is a syntax pf mongodb
+         Post.findByIdAndUpdate(postId,{ $pull :{comments:req.params.id}},function(err,post)
+         {
+             return res.redirect('back');
+         })
+    }else{
+        return res.redirect('back');
+   }
+     });
+ }
