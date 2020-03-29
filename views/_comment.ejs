@@ -1,8 +1,8 @@
-<li>
+<li id="comment-<%= comment._id %>">
     <p>                                  
       <% if (locals.user && locals.user.id == comment.user.id) { %>
      <div id="comment-del">    <small>
-                    <a href="/comments/destroy/<%= comment.id %>"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR9eG-dTn_okDl1n9PVbCo5oKw23LxlaPFaNUEt1M4EnF-KDW6D"width="30px";height="30px";></a>
+                    <a class="delete-post-button" href="/comments/destroy/<%= comment.id %>"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR9eG-dTn_okDl1n9PVbCo5oKw23LxlaPFaNUEt1M4EnF-KDW6D"width="30px";height="30px";></a>
             </small>
             </div>
             <% } %>

@@ -8,16 +8,31 @@ const Post=require('../models/post');
      {
          if(post)
          {
-             Comment.create({
+          let comment= Comment.create({
                  content:req.body.content,
                  post:req.body.post,
                  user:req.user._id
-             },function(err,comment)
+             },
+             function(err,comment)
              {
+                // if(req.xhr)
+                // {
+                //     // we represent json with 200 success
+                //     return res.status(200).json({
+                //         data:{
+                //             comment:comment
+                //         },
+                //         message:"comment created!"
+                //     });
+                // }
+               
+                 req.flash('success','comment created');
+             
                 //  handle error
                 if(err)
                 {
-                    console.log('error in handling ');
+                   req.flash('error',err);
+                   return res.redirect('back');
                 }
 
                 post.comments.push(comment);
@@ -45,9 +60,11 @@ const Post=require('../models/post');
         //  $ pull is a syntax pf mongodb
          Post.findByIdAndUpdate(postId,{ $pull :{comments:req.params.id}},function(err,post)
          {
+             req.flash('success',"comment deleted");
              return res.redirect('back');
          })
     }else{
+        req.flash('success','you ae not authorized to delete the comment');
         return res.redirect('back');
    }
      });

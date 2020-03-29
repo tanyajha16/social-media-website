@@ -1,10 +1,11 @@
-
+<div id="home-section">
+        <div id="left-section">
 <div id="post-section">
         <section id="feed-posts">
                 <% if(locals.user) { %>
                         <h1>HOME PAGE</h1>
                         <h4>Posts</h4>
-                <form action="/posts/create" id="new-posts-form"  method="POST">
+                <form action="/posts/create" id="new-post-form"  method="POST">
               <textarea name="content" cols="30" rows="3"  placeholder="do the post" required>
         </textarea>    <br>
                 <input type="submit" value="Post"><br><br>
@@ -21,17 +22,9 @@
 
         </div>
                 <% } %><br><br>
-               
-        
-                <% } %>
-        
-                
               </ul>
-              
               </div>
-
-             </section>
-
+        </div>
              <!-- to show all the friends -->
              <section id="user-friends">
                      <h4>Friends</h4>
@@ -41,3 +34,9 @@
                        </p>
                         <% } %>
              </section>
+             <% } %>
+        </div>
+
+</section>
+<script src="/js/home_posts.js"></script>
+<!-- <script src="/js/home_comments.js"></script> -->
