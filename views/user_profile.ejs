@@ -1,17 +1,26 @@
-<link rel="stylesheet" href="/css/user_profile.css">
+<!-- <link rel="stylesheet" href="/css/user_profile.css"> -->
         
-       <!-- if(locals.user) 
-       {
-        <h1>PROFILE PAGE</h1>
-        <p>Name:<%= user.name %></p>
-        <p>
-                email:<%=user.email %>
-        </p>
-}
-else
-{ -->
-        <h1>codeial/profile</h1>
-        <p>Name:<%= profile_user.name %></p>
-       <p> email:<%= profile_user.email %></p>
-}
+<img src="<%= user.avatar %>" alt="<%= user.name %>"width="200px";height="200px";>
+
+      <h1>PROFILE PAGE</h1>
+        <!-- updating the user profile -->
+      <%   if(user.id == profile_user.id) {%>
+         <!-- if users matches thenshow the form -->
+        
+               <form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="POST">
+        <input type="text"name="name" placholder="Your name"value="<%= profile_user.name %>"required >
+        <input type="email"name="email" placholder="Your email"value="<%= profile_user.email %>"required >
+      <input type="file"name="avatar" placeholder="Profile Picture">
+        <input type="submit" value="update">
+        
+        </form>
+
+        <%}else {%>
+                <!-- else show only the profile info -->
+              
+                <p>Name:<%= profile_user.name %></p>
+                <p> email:<%= profile_user.email %></p>
+              
+                <% } %>
+                
       

@@ -1,25 +1,29 @@
 
 
-<li>
+<li id="post-<%= post._id %>">
     <p>
             <div id="post-container">
            
             <% if (locals.user && locals.user.id == post.user.id) { %>
         <div id="del-image">   
         <small>
-        <a href="/posts/destroy/<%= post.id %>"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR9eG-dTn_okDl1n9PVbCo5oKw23LxlaPFaNUEt1M4EnF-KDW6D"width="55px";height="50px";></a>
+        <a class="delete-post-button" href="/posts/destroy/<%= post.id %>"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR9eG-dTn_okDl1n9PVbCo5oKw23LxlaPFaNUEt1M4EnF-KDW6D"width="55px";height="50px";></a>
         </small>
         </div>
         <% } %>
-  <div id="post-content"><%= post.content %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  <div id="post-content"><%= post.content %>
+        <br>
+</div>
+<div id="post-name">
   <small>
-    <%= post.user.name %>
+  <p> posted by: <%= post.user.name %></p>
  </small>  
 </div>
+
     </p>   
     <div class="post-comments">
             <% if(locals.user) {%>
-          <form action="/comments/create" method="POST">
+          <form action="/comments/create" id="new-comment-form" method="POST">
                   <input type="text" name="content" placeholder =" comment here" required>
                   <input type="hidden" name="post" value="<%= post._id %>">
                   <input type="submit" value="ADD COMMENT">

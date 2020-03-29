@@ -6,18 +6,18 @@ const cookieParser=require('cookie-parser');
 const app=express();
 const port=8000;
 const db=require('./config/mongoose');
-
 // requiring express session to use libraries
 const session=require('express-session');
 const passport=require('passport');
 const passportLocal=require('./config/passport-local-strategy');
 
+const passportJWT=require('./config/passport-jwt-strategy');
 const MongoStore=require('connect-mongo')(session);
-
-
 // requiring sass file
  const sassMiddleware=require('node-sass-middleware');
-
+// requiring flash
+const flash =require('connect-flash');
+const customMware=require('./config/middleware');
 
  app.use(sassMiddleware({
      src:'./assets/scss',
@@ -29,13 +29,18 @@ const MongoStore=require('connect-mongo')(session);
 app.use(express.urlencoded());
 // importing cookie parser
 app.use(cookieParser());
-
-// require the layouts
 const expressLayouts=require('express-ejs-layouts');
 app.use(expressLayouts);
 
 //require the static files
 app.use(express.static('./assets')); 
+
+// using multer make the upoads path available to the browser
+// the image avatar requires a path so using it here
+app.use('/uploads',express.static(__dirname + '/uploads'));
+
+//  require the layouts
+
 
 // using styles and scripts from the subpages into the layouts
 app.set('layout extractStyles',true );
@@ -78,6 +83,10 @@ app.use(passport.session());
 
 // after checking the authenticationn we weill see if the user is able to view the page and here we will see the user is authenticated or not
 app.use(passport.setAuthenticatedUser);
+
+// using flash after session cookie tahts why after passport session
+app.use(flash());
+app.use(customMware.setFlash);
 
 //use express router
 app.use('/',require('./routes'));

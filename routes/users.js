@@ -7,6 +7,7 @@ console.log("the users router loaded");
 
 
 router.get('/profile/:id',passport.checkAuthentication, usersController.profile);
+router.post('/update/:id',passport.checkAuthentication, usersController.update);
 
 // writing router for the sign in and sign up pages
 router.get('/sign-up',usersController.signUp);
