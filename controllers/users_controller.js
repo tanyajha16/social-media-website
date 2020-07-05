@@ -68,7 +68,7 @@ if(req.file)
     // if the user already has an avatar then delete it and update iy
     if(user.avatar)
     {
-        fs.unlinkSync(path.join(__dirname,'..',user.avatar));
+       user
     }
     // this is saving the path of the uploaded file into the avatar field
     user.avatar = User.avatarPath + "/" + req.file.filename;

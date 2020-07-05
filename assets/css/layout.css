@@ -20,6 +20,11 @@ body {
         font-size: 2.2rem;
         size: 1.5rem;
         background-color: lightgoldenrodyellow; }
+      body #layout-main #sign-in-page #google-sign-in {
+        text-align: center; }
+        body #layout-main #sign-in-page #google-sign-in a {
+          color: white;
+          font-size: 1.2rem; }
     body #layout-main #sign-up-page {
       text-align: center;
       font-size: 2rem;
@@ -30,6 +35,9 @@ body {
         font-size: 2.2rem;
         size: 1.5rem;
         background-color: lightgoldenrodyellow; }
+      body #layout-main #sign-up-page a {
+        color: white;
+        font-size: 1.2rem; }
     body #layout-main #post-section {
       font-size: 1.5rem;
       text-align: center;
@@ -133,10 +141,60 @@ body {
     body #layout-main #home-section {
       display: flex; }
       body #layout-main #home-section #left-section {
-        width: 80%;
+        width: 75%;
         height: 100%;
         padding: 10px; }
       body #layout-main #home-section #user-friends {
         width: 20%;
         height: 100%;
         padding: 10px; }
+    body #layout-main #user-chat-box {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      border: 1px dashed grey;
+      height: 350px;
+      width: 340px;
+      background-color: palegreen;
+      padding: 5px;
+      box-shadow: 1px 1px 1px 1px lightgrey; }
+      body #layout-main #user-chat-box #chat-messages-list {
+        list-style: none;
+        padding: 10px;
+        height: 70%;
+        background-color: white;
+        overflow: auto; }
+        body #layout-main #user-chat-box #chat-messages-list .other-message {
+          text-align: left;
+          padding: 5px; }
+          body #layout-main #user-chat-box #chat-messages-list .other-message span {
+            display: inline-block;
+            padding: 15px;
+            background-color: lightsalmon;
+            color: black; }
+        body #layout-main #user-chat-box #chat-messages-list .self-message {
+          text-align: right;
+          padding: 5px; }
+          body #layout-main #user-chat-box #chat-messages-list .self-message span {
+            display: inline-block;
+            padding: 15px;
+            background-color: rosybrown;
+            color: black; }
+      body #layout-main #user-chat-box #chat-message-input-container {
+        height: 25%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        top: 85%; }
+        body #layout-main #user-chat-box #chat-message-input-container #chat-messages-input {
+          height: 50%;
+          width: 70%; }
+        body #layout-main #user-chat-box #chat-message-input-container #send-message {
+          height: 50%;
+          width: 25%;
+          padding: 5px;
+          font-size: 25px;
+          color: white;
+          border: none;
+          background-color: seagreen; }

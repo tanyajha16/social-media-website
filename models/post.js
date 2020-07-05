@@ -18,6 +18,13 @@ const postSchema=new mongoose.Schema({
             type:mongoose.Schema.Types.ObjectId,
             ref:'Comment',
         }
+    ],
+    // no need of referinng like schema because only the field
+    likes:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Like'
+        }
     ]
 },{
     timestamps:true
