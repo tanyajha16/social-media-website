@@ -7,4 +7,4 @@ router.post('/create',passport.checkAuthentication,postsController.create);
 router.get('/destroy/:id',passport.checkAuthentication,postsController.destroy);
 
 
-module.exports=router;
+module.exports =router;

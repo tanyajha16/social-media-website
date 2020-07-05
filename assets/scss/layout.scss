@@ -5,7 +5,7 @@ body
     color:white;
     font-weight:bold;
     font-family:sans-serif;
-    background-image:url(https://images7.alphacoders.com/359/359057.jpg);
+     background-image:url(https://images7.alphacoders.com/359/359057.jpg);
     background-size: cover;
     background-position: center;
     background-attachment:fixed;
@@ -29,6 +29,15 @@ body
        background-color:lightgoldenrodyellow;
     
      }
+     #google-sign-in
+     {
+         text-align:center;
+        
+         a{
+            color:white;
+            font-size:1.2rem;
+         }
+     }
 
  }
  #sign-up-page
@@ -45,6 +54,10 @@ body
      size:1.5rem;
       background-color:lightgoldenrodyellow;
    
+    }
+    a {
+        color:white;
+        font-size:1.2rem;
     }
  }
 
@@ -198,7 +211,7 @@ body
      display:flex;
      #left-section
      {
-         width:80%;
+         width:75%;
          height:100%;
          padding:10px;
      }
@@ -208,6 +221,81 @@ body
          height:100%;
          padding:10px;
      }
+    }
+ 
+ #user-chat-box
+ {
+     position:fixed;
+     bottom:10px;
+     right:10px;
+    border:1px dashed grey;
+    height:350px;
+    width:340px;
+    background-color:palegreen;
+    padding:5px;
+    box-shadow: 1px 1px 1px 1px lightgrey;
+     
+
+    #chat-messages-list
+    {
+        list-style:none;
+        padding:10px;
+        height:70%;
+        background-color: white;
+        overflow: auto;
+        
+        .other-message
+        {
+            text-align:left;
+            padding:5px;
+            span{
+                display:inline-block;
+                padding:15px;
+                background-color: lightsalmon;
+                color:black;
+            }
+        }
+        .self-message
+        {
+            text-align:right;
+            padding:5px;
+            span{
+                display:inline-block;
+                padding:15px;
+                background-color:rosybrown;
+                color:black;
+            }
+
+        }
+        
+    }
+    #chat-message-input-container
+    {
+        height: 25%;
+        width:100%;
+        display:flex;
+        flex-direction:row;
+        position:absolute;
+            top:85%;
+
+
+        #chat-messages-input
+        {
+            height:50%;
+            width:70%;
+            
+        }
+        #send-message
+        {
+            height:50%;
+            width:25%;
+            padding:5px;
+            font-size: 25px;
+            color:white;
+            border: none;
+            background-color: seagreen;
+        }
+    }
  }
 }
 }
