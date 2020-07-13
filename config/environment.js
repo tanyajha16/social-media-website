@@ -1,3 +1,15 @@
+const fs = require('fs');
+const rfs = require('rotating-file-stream');
+const path= require('path');
+const logDirectory = path.join(__dirname,'../production_logs');
+fs.existsSync (logDirectory) || fs.mkdirSync (logDirectory);
+
+const accessLogStream = rfs.createStream('access.log',{
+    interval:'1d',
+    path:logDirectory,
+    
+});
+
 const development={
     name:'development',
     asset_path:'/assets',
@@ -16,7 +28,11 @@ const development={
    google_client_id:"300436104118-kcrqa8epf11il9aitb31jqhl7hvrb0sd.apps.googleusercontent.com",
     google_client_secret:"677Ftetxd6kskF-f4SlKZyhb",
     google_call_back_url:"http://localhost:8000/users/auth/google/callback",
-    jwt_secret:'codeial'
+    jwt_secret:'codeial',
+    morgan:{
+        mode:'dev',
+        options:{stream : accessLogStream}
+    }
 }
 const production={
     name:"production" ,
@@ -39,8 +55,12 @@ const production={
     google_call_back_url:process.env.CODEIAL_GOOGLE_CALLABACK_URL,
     // jwt_secret:'HEWjug7Q3IQtYJd13nNJxMhzb6C32H8r'
     jwt_secret:process.env.CODEIAL_JWT_SECRET,
+    morgan:{
+        mode:'combined',
+        options:{stream : accessLogStream}
+    }
 }
 
 
-// module.exports=development;
-module.exports=eval(process.env.CODEIAL_ENVIRONMENT) == undefined ? development : eval(process.env.CODEIAL_ENVIRONMENT);
+//  module.exports=development;
+ module.exports=eval(process.env.CODEIAL_ENVIRONMENT) == undefined ? development : eval(process.env.CODEIAL_ENVIRONMENT);
