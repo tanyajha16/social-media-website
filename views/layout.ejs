@@ -1,63 +1,56 @@
 <html>
-    <head>
-        <title>
-        <%=title%>
-        </title>
-        <%- style %>
-        <!-- using css assets here by linking it to the .ejs -->
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
-      
-      <!-- requiring noty -->
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js" ></script>
-      
-      <!--requiring  jquery cdnjs  -->
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-       <link rel="stylesheet" href="<%= assetPath('css/layout.css') %>">
-        <link rel="stylesheet" href="<%= assetPath('css/header.css') %>">
-        <link rel="stylesheet" href="<%= assetPath('css/footer.css') %>">
-       
-        
-        
+  <head>
+    <title>
+      <%=title%>
+    </title>
+    <%- style %>
+    <!-- using css assets here by linking it to the .ejs -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"
+    />
 
-    </head>
-    <body>
-       <%- include('_header'); %>
+    <!-- requiring noty -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
 
+    <!--requiring  jquery cdnjs  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="<%= assetPath('css/layout.css') %>" />
+    <link rel="stylesheet" type="text/css" href="<%= assetPath('css/header.css') %>" />
+    <link rel="stylesheet" type="text/css" href="<%= assetPath('css/footer.css') %>" />
+  </head>
+  <body>
+    <%- include('_header'); %>
 
+    <main id="layout-main">
+      <%- body %>
+    </main>
 
-       <main id="layout-main">
-        <%- body %>
-       </main>
-      
+    <%- include('_footer'); %> <%- script %>
+    <script>
+      <% if (flash.success && flash.success.length >0) {%>
 
-        <%- include('_footer'); %>
+          new Noty({
+          theme:'sunset',
+          text: "<%= flash.success %>",
+          type:"success",
+          layout:"topRight",
+          timeout:1500
 
-        <%- script %>
-        <script>
-            <% if (flash.success && flash.success.length >0) {%>
-            
-                new Noty({
-                theme:'sunset',
-                text: "<%= flash.success %>",
-                type:"success",
-                layout:"topRight",
-                timeout:1500
+          }).show();
+          <%}%>
 
-                }).show();
-                <%}%>
+          <% if (flash.error && flash.error.length >0) {%>
+      ;
+      new Noty({
+      theme:'sunset',
+      text: "<%= flash.error %>",
+      type:"error",
+      layout:"topRight",
+      timeout:1500
 
-                <% if (flash.error && flash.error.length >0) {%>
-            ;
-            new Noty({
-            theme:'sunset',
-            text: "<%= flash.error %>",
-            type:"error",
-            layout:"topRight",
-            timeout:1500
-
-            }).show();
-            <%}%>
-
-        </script>
-    </body>
+      }).show();
+      <%}%>
+    </script>
+  </body>
 </html>
